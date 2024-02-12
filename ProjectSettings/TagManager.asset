@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Platform
+  - Interactable
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Interactable
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Sky
+    uniqueID: 1811659793
+    locked: 0
+  - name: Background
+    uniqueID: 1643274927
+    locked: 0
+  - name: Midground
+    uniqueID: 3007666283
+    locked: 0
+  - name: Interactable
+    uniqueID: 3856004765
+    locked: 0
+  - name: Raymond
+    uniqueID: 3213535301
+    locked: 0
+  - name: Foreground
+    uniqueID: 1828426325
+    locked: 0
