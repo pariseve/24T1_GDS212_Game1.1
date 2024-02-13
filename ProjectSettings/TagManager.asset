@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Platform
   - Interactable
+  - Blinds
   layers:
   - Default
   - TransparentFX
@@ -49,8 +50,14 @@ TagManager:
   - name: Background
     uniqueID: 1643274927
     locked: 0
+  - name: Blinds
+    uniqueID: 1815718947
+    locked: 0
   - name: Midground
     uniqueID: 3007666283
+    locked: 0
+  - name: Second Midground
+    uniqueID: 3610991299
     locked: 0
   - name: Interactable
     uniqueID: 3856004765

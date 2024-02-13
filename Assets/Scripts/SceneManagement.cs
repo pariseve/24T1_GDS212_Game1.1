@@ -1,54 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-
-public class SceneManagement : MonoBehaviour
+public class SceneManagement: MonoBehaviour
 {
-    public GameObject optionsMenu;
-
-    private void Start()
+    [SerializeField] private Object sceneObject;
+    [SerializeField] private GameObject menuObj;
+    
+    private Scene currentScene;
+    public void GoToScene()
     {
-        if (optionsMenu != null)
+        if (sceneObject != null)
         {
-            optionsMenu.SetActive(false);
+            string sceneName = sceneObject.name;
+            if (currentScene.IsValid())
+            {
+                SceneManager.UnloadSceneAsync(currentScene);
+            }
+            SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
+            currentScene = SceneManager.GetSceneByName(sceneName);
         }
-    }
-    public void LoadMainMenu()
-    {
-        SceneManager.LoadScene(0);
-    }
-
-    public void LoadGame()
-    {
-        SceneManager.LoadScene(1);
-    }
-
-    public void LoadEndScreen()
-    {
-        SceneManager.LoadScene(2);
-    }
-
-    public void OpenMenu()
-    {
-        TogglePauseMenu();
-    }
-
-    public void CloseMenu()
-    {
-        if (optionsMenu != null)
+        else
         {
-            optionsMenu.SetActive(false);
+            Debug.LogWarning("Scene Object not assigned.");
         }
     }
 
-    private void TogglePauseMenu()
+    public void OpenPanel()
     {
-        if(optionsMenu != null)
-        {
-            optionsMenu.SetActive(true);
-        }
+        menuObj.SetActive(true);
+    }
+
+
+    public void ClosePanel()
+    {
+        menuObj.SetActive(false);
     }
 }
