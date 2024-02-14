@@ -12,5 +12,4 @@ public class OpenGarden : MonoBehaviour
         windowExit.SetActive(true);
     }
 
-
 }

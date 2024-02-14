@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class SpriteChangeOnInteraction : MonoBehaviour
 {
+    public TaskManager taskManager;
+
     public Sprite newSprite; // The new sprite to be set
 
     [SerializeField] private UnityEvent function;
