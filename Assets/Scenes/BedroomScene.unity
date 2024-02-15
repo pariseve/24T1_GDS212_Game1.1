@@ -880,6 +880,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &504608908 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1681511334810335611, guid: 761a817aecb805f4283333387adceb87, type: 3}
+  m_PrefabInstance: {fileID: 4124034210462924923}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &504608910
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504608908}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 15afd65b45fc8c149a3fc4d315777a4c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &554051392
 GameObject:
   m_ObjectHideFlags: 0
@@ -1012,6 +1038,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1284310280}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: ReachingPose
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!61 &554051396
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1044,7 +1082,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 2.766309, y: -0.15549266}
+  m_Offset: {x: 2.98, y: -0.15549266}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1055,7 +1093,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.8773818, y: 2.5059764}
+  m_Size: {x: 1.42, y: 2.5059764}
   m_EdgeRadius: 0
 --- !u!114 &554051397
 MonoBehaviour:
@@ -1323,8 +1361,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.00044995546, y: 0.00015002489, z: 0}
-    m_Extent: {x: 1.4999499, y: 1.5000501, z: 0}
+    m_Center: {x: -0.00014996529, y: 0.00040000677, z: 0}
+    m_Extent: {x: 1.50045, y: 1.5005, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -1557,6 +1595,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1284310280}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: ReachingPose
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!61 &1157160753
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1589,7 +1639,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.19898045, y: -0.5722439}
+  m_Offset: {x: 0, y: -0.82}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1600,7 +1650,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.9444444, y: 2.967898}
+  m_Size: {x: 2.17, y: 3}
   m_EdgeRadius: 0
 --- !u!1 &1212336427
 GameObject:
@@ -1708,6 +1758,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.74259865, y: 0.474244}
   m_EdgeRadius: 0
+--- !u!114 &1284310280 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6814430879164215551, guid: 761a817aecb805f4283333387adceb87, type: 3}
+  m_PrefabInstance: {fileID: 4124034210462924923}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4f3531ae9955264eb14b8f829182a15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1309904180
 GameObject:
   m_ObjectHideFlags: 0
@@ -1844,8 +1905,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -2.8572998, y: -1.5360501, z: 0}
-    m_Extent: {x: 13.8557, y: 8.24715, z: 0}
+    m_Center: {x: -2.8576498, y: -1.5358, z: 0}
+    m_Extent: {x: 13.85625, y: 8.2465, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -3208,10 +3269,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2717942112249654613, guid: 761a817aecb805f4283333387adceb87, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717942112249654613, guid: 761a817aecb805f4283333387adceb87, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717942112249654613, guid: 761a817aecb805f4283333387adceb87, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5816334290102602804, guid: 761a817aecb805f4283333387adceb87, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5866605149794805565, guid: 761a817aecb805f4283333387adceb87, type: 3}
       propertyPath: m_Name
       value: Player Character
       objectReference: {fileID: 0}
+    - target: {fileID: 6814430879164215551, guid: 761a817aecb805f4283333387adceb87, type: 3}
+      propertyPath: jumpingSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 254f44536d8a63d409f70a00dee26441, type: 3}
+    - target: {fileID: 6814430879164215551, guid: 761a817aecb805f4283333387adceb87, type: 3}
+      propertyPath: reachUpSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7ef28fcb0e850a3459797792e0ce5845, type: 3}
     - target: {fileID: 8303405412720044414, guid: 761a817aecb805f4283333387adceb87, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.89
@@ -3255,7 +3340,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1681511334810335611, guid: 761a817aecb805f4283333387adceb87, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 504608910}
   m_SourcePrefab: {fileID: 100100000, guid: 761a817aecb805f4283333387adceb87, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

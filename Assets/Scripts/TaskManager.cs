@@ -13,7 +13,7 @@ public class TaskManager : MonoBehaviour
         AddTask(new Task("Open Window", "Draw the blinds to let light into the room"));
         AddTask(new Task("Give teddy", "Give the doppo plush to girl"));
         AddTask(new Task("Give drawing", "Give the crumpled drawing to girl"));
-        AddTask(new Task("Give flowers", "Put the bouquet in the vase"));
+        //AddTask(new Task("Give flowers", "Put the bouquet in the vase"));
     }
     //add task to task list
     public void AddTask(Task task)
@@ -46,7 +46,7 @@ public class TaskManager : MonoBehaviour
 
     public void TriggerEndGame()
     {
-        SceneManager.LoadScene("EndGameScene");
+        SceneManager.LoadScene("EndScene");
     }
 }
 
