@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class SpriteChangeOnInteraction : MonoBehaviour
+public class GiveItem : MonoBehaviour
 {
     public TaskManager taskManager;
     public string taskId;
 
     public Sprite newSprite; //new sprite to replace old one
 
-    [SerializeField] private UnityEvent function;
     [SerializeField] private UnityEvent<string> checkFunction;
 
-    private SpriteRenderer spriteRenderer;
+    public string customTag; // Custom tag for the trigger area
 
-    private bool playerInArea = false;
+    private SpriteRenderer spriteRenderer;
 
     private void Start()
     {
@@ -24,39 +23,12 @@ public class SpriteChangeOnInteraction : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Check if the player entered the trigger area
-        if (collision.CompareTag("Player"))
+        // Check if the player entered the trigger area with the specified custom tag
+        if (collision.CompareTag(customTag))
         {
             // Provide feedback to the player if needed
-            Debug.Log("Press F to change sprite");
-            playerInArea = true;
-            StartCoroutine(CheckForKeyPress());
-        }
-    }
-
-    private IEnumerator CheckForKeyPress()
-    {
-        while (playerInArea)
-        {
-            Debug.Log("Player in area");
-            // Check for interaction input
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                Debug.Log("Player hit key in area");
-                // Change the sprite
-                ChangeSprite();
-            }
-            yield return null;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        // Check if the player exited the trigger area
-        if (collision.CompareTag("Player"))
-        {
-            Debug.Log("Player left area");
-            playerInArea = false;
+            Debug.Log("Player is in trigger area with the specified tag");
+            ChangeSprite();
         }
     }
 
@@ -101,6 +73,17 @@ public class SpriteChangeOnInteraction : MonoBehaviour
             {
                 Debug.LogWarning("Check Function Unity Event is not assigned!");
             }
+
+            // Destroy the game object with the specified tag
+            GameObject objectToDestroy = GameObject.FindGameObjectWithTag(customTag);
+            if (objectToDestroy != null)
+            {
+                Destroy(objectToDestroy);
+            }
+            else
+            {
+                Debug.LogWarning("No game object found with the specified tag to destroy!");
+            }
         }
         else
         {
@@ -108,4 +91,3 @@ public class SpriteChangeOnInteraction : MonoBehaviour
         }
     }
 }
-

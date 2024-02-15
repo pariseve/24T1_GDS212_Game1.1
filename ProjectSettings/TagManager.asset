@@ -7,6 +7,7 @@ TagManager:
   - Platform
   - Interactable
   - Blinds
+  - Teddy
   layers:
   - Default
   - TransparentFX
@@ -58,6 +59,9 @@ TagManager:
     locked: 0
   - name: Second Midground
     uniqueID: 3610991299
+    locked: 0
+  - name: 3rd Midground
+    uniqueID: 3770517213
     locked: 0
   - name: Interactable
     uniqueID: 3856004765

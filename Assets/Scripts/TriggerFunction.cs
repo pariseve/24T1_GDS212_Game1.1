@@ -7,9 +7,9 @@ public class TriggerFunction : MonoBehaviour
 {
     [SerializeField] private UnityEvent Function;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player") && Input.GetKeyDown(KeyCode.X))
+        if(collision.CompareTag("Player") && Input.GetKey(KeyCode.X))
         Function.Invoke();
     }
 }

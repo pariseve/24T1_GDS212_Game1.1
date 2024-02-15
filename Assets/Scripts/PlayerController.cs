@@ -28,8 +28,6 @@ public class PlayerController : MonoBehaviour
         // Flip the character based on the input direction
         FlipCharacter(horizontalInput);
 
-        // Debug logs for jump input and grounded state
-        Debug.Log("Grounded: " + isGrounded);
 
         // Check for jump input (spacebar or W key) and grounded state
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && isGrounded)

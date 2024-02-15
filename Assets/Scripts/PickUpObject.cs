@@ -8,15 +8,17 @@ public class PickUpObject : MonoBehaviour
     private GameObject carriedObject;
     private bool isCarryingObject = false;
 
+    //public GiveItem giveItem; 
+
     void Update()
     {
-        // Check if the E key is held down
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (isCarryingObject)
             {
                 // If already carrying an object, drop it
                 DropObject();
+                //giveItem.ItemDropped(); 
             }
             else
             {
@@ -37,30 +39,28 @@ public class PickUpObject : MonoBehaviour
         Vector2 raycastOrigin = pickupPosition.position;
         Vector2 raycastDirection = Vector2.down;
 
-        // Define the layer mask for the "Interactable" layer
+        // define the layer mask for the "Interactable" layer
         LayerMask layerMask = LayerMask.GetMask("Interactable");
 
-        // Use a raycast to check if there is an object with the "Interactable" tag in front of the pickup position
+        // use a raycast to check if there is an object on the "Interactable" layer in front of the pickup position
         RaycastHit2D hit = Physics2D.Raycast(raycastOrigin, raycastDirection, 10f, layerMask);
 
-        // Log raycast information
+        // log raycast information
         Debug.DrawRay(raycastOrigin, raycastDirection * 5f, Color.red);
         Debug.Log($"Raycast origin: {raycastOrigin}, Raycast direction: {raycastDirection}");
 
         if (hit.collider != null)
         {
-            Debug.Log($"Raycast hit: {hit.collider.gameObject.name}, Tag: {hit.collider.tag}");
+            Debug.Log($"Raycast hit: {hit.collider.gameObject.name}, Layer: {LayerMask.LayerToName(hit.collider.gameObject.layer)}");
 
-            // Ensure the collider is of type Collider2D
-            Collider2D objectCollider = hit.collider as Collider2D;
-            if (objectCollider != null && objectCollider.CompareTag("Interactable"))
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Interactable"))
             {
                 Debug.Log("Hit Interactable!");
                 PickUp(hit.collider.gameObject);
             }
             else
             {
-                Debug.Log("Object found, but it doesn't have the 'Interactable' tag or is not a Collider2D.");
+                Debug.Log("Object found, but it's not on the 'Interactable' layer.");
             }
         }
         else
@@ -68,6 +68,7 @@ public class PickUpObject : MonoBehaviour
             Debug.Log("No object found in the raycast.");
         }
     }
+
 
     void PickUp(GameObject objToPickUp)
     {
