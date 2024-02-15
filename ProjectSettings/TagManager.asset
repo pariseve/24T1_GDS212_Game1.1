@@ -8,6 +8,7 @@ TagManager:
   - Interactable
   - Blinds
   - Teddy
+  - Paper
   layers:
   - Default
   - TransparentFX
