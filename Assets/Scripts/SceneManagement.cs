@@ -1,22 +1,23 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class SceneManagement: MonoBehaviour
+
+public class SceneManagement : MonoBehaviour
 {
     [SerializeField] private Object sceneObject;
     [SerializeField] private GameObject menuObj;
-    
+    [SerializeField] private GameObject fadePanel;
+    [SerializeField] private float fadeDuration = 1f;
+
     private Scene currentScene;
+
     public void GoToScene()
     {
         if (sceneObject != null)
         {
             string sceneName = sceneObject.name;
-            if (currentScene.IsValid())
-            {
-                SceneManager.UnloadSceneAsync(currentScene);
-            }
-            SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
-            currentScene = SceneManager.GetSceneByName(sceneName);
+
+            StartCoroutine(FadeAndLoad(sceneName));
         }
         else
         {
@@ -24,11 +25,46 @@ public class SceneManagement: MonoBehaviour
         }
     }
 
+    IEnumerator FadeAndLoad(string sceneName)
+    {
+        fadePanel.SetActive(true);
+
+        float elapsedTime = 0f;
+        Color fadeColor = fadePanel.GetComponent<UnityEngine.UI.Image>().color;
+
+        while (elapsedTime < fadeDuration)
+        {
+            float alpha = Mathf.Lerp(0f, 1f, elapsedTime / fadeDuration);
+            fadeColor.a = alpha;
+            fadePanel.GetComponent<UnityEngine.UI.Image>().color = fadeColor;
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
+
+        yield return new WaitForSeconds(0.1f); // Wait for a short time to ensure the scene is loaded
+
+        currentScene = SceneManager.GetSceneByName(sceneName);
+
+        elapsedTime = 0f;
+
+        while (elapsedTime < fadeDuration)
+        {
+            float alpha = Mathf.Lerp(1f, 0f, elapsedTime / fadeDuration);
+            fadeColor.a = alpha;
+            fadePanel.GetComponent<UnityEngine.UI.Image>().color = fadeColor;
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        fadePanel.SetActive(false);
+    }
+
     public void OpenPanel()
     {
         menuObj.SetActive(true);
     }
-
 
     public void ClosePanel()
     {

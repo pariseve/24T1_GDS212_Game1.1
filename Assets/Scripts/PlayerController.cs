@@ -18,6 +18,17 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private bool isGrounded = false; // Track the grounded state
 
+    AudioManager audioManager;
+    public AudioClip[] meowClips;
+
+    public TaskManager taskManager;
+    public string taskId;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio Manager").GetComponent<AudioManager>();
+    }
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -71,6 +82,28 @@ public class PlayerController : MonoBehaviour
 
             isGrounded = false; // Set grounded state to false
         }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Meow();
+            Task task = taskManager.tasks.Find(t => t.id == taskId);
+
+            // Check if the task exists
+            if (task != null)
+            {
+                // Check if the task associated with the sprite change is complete
+                if (task.IsComplete)
+                {
+                    Debug.Log("Task is already complete!");
+                }
+                else
+                {
+                    Debug.Log("Task is now complete!");
+                    // Set the task associated with the sprite change as complete
+                    taskManager.SetTaskComplete(taskId);
+                }
+            }
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -120,6 +153,30 @@ public class PlayerController : MonoBehaviour
         {
             Debug.LogWarning("Jumping sprite is not assigned!");
         }
+    }
+
+    private void Meow()
+    {
+        // If AudioManager is not assigned, exit the function
+        if (audioManager == null)
+        {
+            Debug.LogWarning("AudioManager is not assigned!");
+            return;
+        }
+
+        // Check if there are meow clips assigned
+        if (meowClips.Length < 2)
+        {
+            Debug.LogWarning("At least 2 meow clips are required!");
+            return;
+        }
+
+        // Choose a random meow clip from the array
+        int randomIndex = Random.Range(0, meowClips.Length);
+        AudioClip randomMeowClip = meowClips[randomIndex];
+
+        // Play the randomly selected meow clip using AudioManager
+        audioManager.PlaySFX(randomMeowClip);
     }
 
     private IEnumerator EnableAnimatorAfterDelay(float delay)

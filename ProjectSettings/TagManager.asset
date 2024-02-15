@@ -9,6 +9,7 @@ TagManager:
   - Blinds
   - Teddy
   - Paper
+  - Audio Manager
   layers:
   - Default
   - TransparentFX

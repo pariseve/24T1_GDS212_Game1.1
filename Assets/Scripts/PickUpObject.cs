@@ -5,12 +5,12 @@ using UnityEngine;
 public class PickUpObject : MonoBehaviour
 {
     public Transform pickupPosition; // Reference to the empty GameObject for picking up objects
+    public GameObject paperPanel; // Reference to the UI panel to activate when picking up paper
+    public float panelDisplayTime = 4f; // Duration to display the paper panel
     private GameObject carriedObject;
     private bool isCarryingObject = false;
 
-    //public GiveItem giveItem; 
-
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -18,7 +18,6 @@ public class PickUpObject : MonoBehaviour
             {
                 // If already carrying an object, drop it
                 DropObject();
-                //giveItem.ItemDropped(); 
             }
             else
             {
@@ -34,18 +33,18 @@ public class PickUpObject : MonoBehaviour
         }
     }
 
-    void TryPickUpObject()
+    private void TryPickUpObject()
     {
         Vector2 raycastOrigin = pickupPosition.position;
         Vector2 raycastDirection = Vector2.down;
 
-        // define the layer mask for the "Interactable" layer
+        // Define the layer mask for the "Interactable" layer
         LayerMask layerMask = LayerMask.GetMask("Interactable");
 
-        // use a raycast to check if there is an object on the "Interactable" layer in front of the pickup position
+        // Use a raycast to check if there is an object on the "Interactable" layer in front of the pickup position
         RaycastHit2D hit = Physics2D.Raycast(raycastOrigin, raycastDirection, 10f, layerMask);
 
-        // log raycast information
+        // Log raycast information
         Debug.DrawRay(raycastOrigin, raycastDirection * 5f, Color.red);
         Debug.Log($"Raycast origin: {raycastOrigin}, Raycast direction: {raycastDirection}");
 
@@ -53,14 +52,22 @@ public class PickUpObject : MonoBehaviour
         {
             Debug.Log($"Raycast hit: {hit.collider.gameObject.name}, Layer: {LayerMask.LayerToName(hit.collider.gameObject.layer)}");
 
-            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Interactable"))
+            if (hit.collider.CompareTag("Paper"))
+            {
+                Debug.Log("Picked up paper!");
+                // Activate the paper panel
+                ActivatePaperPanel();
+                // Pick up the paper object
+                PickUp(hit.collider.gameObject);
+            }
+            else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Interactable"))
             {
                 Debug.Log("Hit Interactable!");
                 PickUp(hit.collider.gameObject);
             }
             else
             {
-                Debug.Log("Object found, but it's not on the 'Interactable' layer.");
+                Debug.Log("Object found, but it's not paper or on the 'Interactable' layer.");
             }
         }
         else
@@ -69,8 +76,7 @@ public class PickUpObject : MonoBehaviour
         }
     }
 
-
-    void PickUp(GameObject objToPickUp)
+    private void PickUp(GameObject objToPickUp)
     {
         // Set the carried object
         carriedObject = objToPickUp;
@@ -89,7 +95,7 @@ public class PickUpObject : MonoBehaviour
         Debug.Log($"Picked up {carriedObject.name}.");
     }
 
-    void DropObject()
+    private void DropObject()
     {
         // Enable the object's Rigidbody component
         Rigidbody2D rb = carriedObject.GetComponent<Rigidbody2D>();
@@ -104,5 +110,33 @@ public class PickUpObject : MonoBehaviour
 
         // Reset the carriedObject variable
         carriedObject = null;
+    }
+
+    private void ActivatePaperPanel()
+    {
+        if (paperPanel != null)
+        {
+            // Activate the paper panel
+            paperPanel.SetActive(true);
+
+            // Start a coroutine to deactivate the panel after the specified duration
+            StartCoroutine(DeactivatePanelAfterDelay());
+        }
+        else
+        {
+            Debug.LogWarning("Paper panel is not assigned!");
+        }
+    }
+
+    private IEnumerator DeactivatePanelAfterDelay()
+    {
+        // Wait for the specified duration
+        yield return new WaitForSeconds(panelDisplayTime);
+
+        // Deactivate the paper panel
+        if (paperPanel != null)
+        {
+            paperPanel.SetActive(false);
+        }
     }
 }
