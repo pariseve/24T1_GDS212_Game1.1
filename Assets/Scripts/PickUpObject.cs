@@ -31,6 +31,16 @@ public class PickUpObject : MonoBehaviour
         {
             carriedObject.transform.position = pickupPosition.position;
         }
+
+        // Check for space key input
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            // Disable the canvas when space key is pressed
+            if (paperPanel != null)
+            {
+                paperPanel.SetActive(false);
+            }
+        }
     }
 
     private void TryPickUpObject()
@@ -119,8 +129,10 @@ public class PickUpObject : MonoBehaviour
             // Activate the paper panel
             paperPanel.SetActive(true);
 
+            
+
             // Start a coroutine to deactivate the panel after the specified duration
-            StartCoroutine(DeactivatePanelAfterDelay());
+            //StartCoroutine(DeactivatePanelAfterDelay());
         }
         else
         {
@@ -128,15 +140,15 @@ public class PickUpObject : MonoBehaviour
         }
     }
 
-    private IEnumerator DeactivatePanelAfterDelay()
-    {
-        // Wait for the specified duration
-        yield return new WaitForSeconds(panelDisplayTime);
+    //private IEnumerator DeactivatePanelAfterDelay()
+    //{
+    //    // Wait for the specified duration
+    //    yield return new WaitForSeconds(panelDisplayTime);
 
-        // Deactivate the paper panel
-        if (paperPanel != null)
-        {
-            paperPanel.SetActive(false);
-        }
-    }
+    //    // Deactivate the paper panel
+    //    if (paperPanel != null)
+    //    {
+    //        paperPanel.SetActive(false);
+    //    }
+    //}
 }

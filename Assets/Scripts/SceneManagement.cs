@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagement : MonoBehaviour
 {
-    [SerializeField] private Object sceneObject;
+    [SerializeField] private string sceneName;
     [SerializeField] private GameObject menuObj;
     [SerializeField] private GameObject fadePanel;
     [SerializeField] private float fadeDuration = 1f;
@@ -13,19 +13,10 @@ public class SceneManagement : MonoBehaviour
 
     public void GoToScene()
     {
-        if (sceneObject != null)
-        {
-            string sceneName = sceneObject.name;
-
-            StartCoroutine(FadeAndLoad(sceneName));
-        }
-        else
-        {
-            Debug.LogWarning("Scene Object not assigned.");
-        }
+        StartCoroutine(FadeAndLoad());
     }
 
-    IEnumerator FadeAndLoad(string sceneName)
+    IEnumerator FadeAndLoad()
     {
         fadePanel.SetActive(true);
 

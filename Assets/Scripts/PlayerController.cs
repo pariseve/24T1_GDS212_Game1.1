@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour
     public TaskManager taskManager;
     public string taskId;
 
+    [SerializeField] private float minX;
+    [SerializeField] private float maxX;
+
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio Manager").GetComponent<AudioManager>();
@@ -104,6 +107,9 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+
+        float newx = Mathf.Clamp(transform.position.x, minX, maxX);
+        transform.position = new Vector3(newx, transform.position.y, transform.position.z);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
