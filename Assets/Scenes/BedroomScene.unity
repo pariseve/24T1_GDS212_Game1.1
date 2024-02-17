@@ -330,8 +330,11 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: 0.6074324, y: -0.60725814}
-  - {x: 1.0603886, y: -0.61581004}
+  - {x: -1.2460401, y: 0.7581447}
+  - {x: 0.2512251, y: 0.7538712}
+  - {x: 0.24808228, y: -0.598656}
+  - {x: 0.8370584, y: -0.59367347}
+  - {x: 0.8261948, y: -1.471127}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -368,7 +371,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: -0.4062649, y: 0.5}
+  m_Offset: {x: -0.5213513, y: -0.35429466}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -379,7 +382,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.6674702, y: 0.59228593}
+  m_Size: {x: 1.4372975, y: 2.3008754}
   m_EdgeRadius: 0
 --- !u!251 &51292535
 PlatformEffector2D:
@@ -1660,8 +1663,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.00050002337, y: 0.00040000677, z: 0}
-    m_Extent: {x: 1.5004001, y: 1.5004001, z: 0}
+    m_Center: {x: 0.00054997206, y: 0.00009995699, z: 0}
+    m_Extent: {x: 1.4999499, y: 1.5002999, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -2668,7 +2671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09d23cb9b0ae4bc40800b2b8e7bdfa91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneObject: {fileID: 0}
+  sceneName: 
   menuObj: {fileID: 0}
   fadePanel: {fileID: 0}
   fadeDuration: 1

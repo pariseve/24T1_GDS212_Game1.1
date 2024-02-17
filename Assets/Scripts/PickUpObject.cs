@@ -122,23 +122,41 @@ public class PickUpObject : MonoBehaviour
         carriedObject = null;
     }
 
+    private bool isPaperPanelOpen = false;
+
     private void ActivatePaperPanel()
     {
-        if (paperPanel != null)
+        if (!isPaperPanelOpen && paperPanel != null)
         {
             // Activate the paper panel
             paperPanel.SetActive(true);
 
-            
-
-            // Start a coroutine to deactivate the panel after the specified duration
-            //StartCoroutine(DeactivatePanelAfterDelay());
+            // Set the flag to true to indicate that the panel is now open
+            isPaperPanelOpen = true;
+        }
+        else if (isPaperPanelOpen)
+        {
+            Debug.LogWarning("Paper panel is already open!");
         }
         else
         {
             Debug.LogWarning("Paper panel is not assigned!");
         }
     }
+
+    private void DeactivatePaperPanel()
+    {
+        if (paperPanel != null)
+        {
+            // Deactivate the paper panel
+            paperPanel.SetActive(false);
+        }
+        else
+        {
+            Debug.LogWarning("Paper panel is not assigned!");
+        }
+    }
+
 
     //private IEnumerator DeactivatePanelAfterDelay()
     //{
